@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tundra Tech - Premier Web Development & Maintenance Agency. We design, build, and maintain custom websites and high-converting landing pages built on sub-zero speeds and frozen-solid reliability.">
+  <meta name="keywords" content="Tundra Tech, web development, website maintenance, landing page agency, custom web design, web care packages">
+  <meta property="og:title" content="Tundra Tech — Custom Web Development & Maintenance Studio">
+  <meta property="og:description" content="Stunning custom websites and landing pages engineered for speed, conversions, and hassle-free maintenance.">
+  <meta property="og:image" content="assets/logo.png">
+  <title>Tundra Tech — Web Development & Maintenance Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+
+  <!-- Background Interactive Digital Glacier Canvas -->
+  <canvas id="glacier-canvas"></canvas>
+  <div class="bg-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand" id="nav-brand">
+        <img src="assets/logo.png" alt="Tundra Tech Logo" class="brand-logo" id="brand-logo-img">
+        <span class="brand-text">Tundra<span style="color: var(--color-primary);">Tech</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#estimator" class="nav-link">Build Inspector</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-badge" id="system-status">
+          <span class="status-dot"></span>
+          <span>Taking New Projects</span>
+        </div>
+        <a href="#contact" class="btn btn-primary js-open-modal" id="nav-cta">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="hero-pill-spark">❄️</span>
+        <span>Custom Web Development & Maintenance Studio</span>
+      </div>
+
+      <h1 class="hero-title">
+        High-Performance Websites Built on <span class="text-gradient">Frozen Solid Quality</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        We design, build, and maintain custom websites and high-converting landing pages that load at sub-zero speeds, look stunning, and drive real business growth.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary js-open-modal" id="hero-primary-cta">
+          Start Your Web Project
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#estimator" class="btn btn-secondary" id="hero-secondary-cta">
+          Explore Build Estimator
+        </a>
+      </div>
+
+      <!-- Hero Metrics Bar -->
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val">100+</div>
+          <div class="stat-lbl">Websites Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">&lt; 0.4s</div>
+          <div class="stat-lbl">Page Load Speed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">99.9%</div>
+          <div class="stat-lbl">Maintenance Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">Custom Code Quality</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">End-to-End Web Solutions</h2>
+        <p class="section-desc">
+          From initial visual concepts to custom front-end development and monthly maintenance, we take care of your entire web footprint.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Service 1 -->
+        <div class="glass-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h3 class="card-title">High-Impact Landing Pages</h3>
+          <p class="card-text">
+            Bespoke, high-converting landing pages crafted with modern glassmorphism UI, interactive visuals, and clear call-to-actions.
+          </p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="glass-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3 class="card-title">Custom Web Development</h3>
+          <p class="card-text">
+            Clean, semantic HTML, CSS, and JS development without bulky templates or sluggish plugins. Built for maximum speed and SEO ranking.
+          </p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="glass-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="card-title">Website Maintenance & Care</h3>
+          <p class="card-text">
+            Hassle-free monthly care plans including 24/7 uptime monitoring, security patches, bug fixes, and regular content updates.
+          </p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="glass-card">
+          <div class="card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="card-title">Redesign & Performance Tuning</h3>
+          <p class="card-text">
+            Revamp existing outdated sites with modern aesthetic design, mobile responsiveness, and 95+ Google Lighthouse speed scores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Build & Performance Inspector -->
+  <section class="section" id="estimator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Preview</span>
+        <h2 class="section-title">Web Performance Estimator</h2>
+        <p class="section-desc">
+          See how Tundra Tech optimizes page scale and speed parameters for maximum Google Lighthouse score and lightning load speeds.
+        </p>
+      </div>
+
+      <div class="simulator-container">
+        <!-- Controls -->
+        <div class="sim-controls">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Project Scale & Page Count</span>
+              <span class="control-val" id="val-workload">5 Pages</span>
+            </div>
+            <input type="range" min="1" max="25" value="5" class="range-slider" id="workload-slider">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <span>Optimization & Care Target</span>
+              <span class="control-val" id="val-temp">85%</span>
+            </div>
+            <input type="range" min="30" max="100" value="85" class="range-slider" id="temp-slider">
+          </div>
+
+          <div class="sim-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-card-title">Lighthouse Performance</div>
+              <div class="metric-card-val" id="metric-ops">98 / 100</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-title">Est. Load Speed</div>
+              <div class="metric-card-val" id="metric-latency">0.34 s</div>
+            </div>
+            <div class="metric-card" style="grid-column: span 2;">
+              <div class="metric-card-title">Uptime & Maintenance Health</div>
+              <div class="metric-card-val" id="metric-efficiency" style="color: var(--color-primary);">99.98%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal & Component Status -->
+        <div class="sim-display">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="terminal-title">tundra-build://web-assembly-pipeline</div>
+          </div>
+
+          <div class="nodes-matrix">
+            <div class="node-box active">
+              <div class="node-name">SEO CORE</div>
+              <div class="node-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            </div>
+            <div class="node-box active">
+              <div class="node-name">UI/UX DESIGN</div>
+              <div class="node-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            </div>
+            <div class="node-box active">
+              <div class="node-name">PERFORMANCE</div>
+              <div class="node-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            </div>
+            <div class="node-box active">
+              <div class="node-name">MAINTENANCE</div>
+              <div class="node-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; font-family: monospace; font-size: 0.8rem; color: #34d399;" id="terminal-log">
+            [TUNDRA-DEV-ENGINE] Project Scale: 5 Pages | Optimization Level: 85% | Lighthouse Score: 98/100 | Speed: 0.34s
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Packages & Pricing</span>
+        <h2 class="section-title">Transparent Project & Care Plans</h2>
+        <p class="section-desc">Choose between a custom build project or an ongoing monthly website care plan.</p>
+      </div>
+
+      <div class="pricing-toggle-wrap">
+        <span>One-Time Project Build</span>
+        <div class="pricing-toggle" id="pricing-toggle">
+          <div class="pricing-toggle-thumb"></div>
+        </div>
+        <span>Monthly Web Care & Maintenance</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan 1 -->
+        <div class="glass-card price-card">
+          <div>
+            <h3 class="card-title">Landing Page Sprint</h3>
+            <p class="card-text">Perfect for product launches, marketing campaigns, & local businesses.</p>
+            <div class="price-amount">
+              $<span class="price-val" data-monthly="1,299" data-annual="149">1,299</span>
+              <span class="price-period" data-period-monthly=" one-time" data-period-annual=" / mo care"> one-time</span>
+            </div>
+            <ul class="price-features">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom High-Conversion Design</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 100% Mobile & Responsive</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Google Lighthouse 95+ Speed</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> On-Page SEO Setup</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Book Sprint</a>
+        </div>
+
+        <!-- Plan 2 (Featured) -->
+        <div class="glass-card price-card featured">
+          <span class="featured-badge">Most Popular</span>
+          <div>
+            <h3 class="card-title" style="color: var(--color-primary);">Full Web Studio Package</h3>
+            <p class="card-text">Complete multi-page custom website designed and maintained for growth.</p>
+            <div class="price-amount">
+              $<span class="price-val" data-monthly="2,799" data-annual="299">2,799</span>
+              <span class="price-period" data-period-monthly=" one-time" data-period-annual=" / mo care"> one-time</span>
+            </div>
+            <ul class="price-features">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-Page Custom Website (Up to 10 Pages)</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Modern Glassmorphism & Animations</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Lead Capture & Contact Forms</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly Content Updates & Backups Included</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority 24-Hour Developer Support</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn btn-primary js-open-modal" style="width: 100%;">Start Project</a>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="glass-card price-card">
+          <div>
+            <h3 class="card-title">Custom Agency Retainer</h3>
+            <p class="card-text">Dedicated web team for ongoing development, redesigns, & enterprise care.</p>
+            <div class="price-amount">
+              Custom
+            </div>
+            <ul class="price-features">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Unlimited Page Additions & Updates</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Lead Web Developer</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Web App & API Integrations</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 99.9% Uptime Guarantee & SLA</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand">
+            <img src="assets/logo.png" alt="Tundra Tech Logo" class="brand-logo">
+            <span class="brand-text">Tundra<span style="color: var(--color-primary);">Tech</span></span>
+          </a>
+          <p>
+            Custom web development and maintenance agency creating ultra-fast, high-converting websites with frozen-solid reliability.
+          </p>
+          <div class="status-badge" style="display: inline-flex;">
+            <span class="status-dot"></span>
+            <span>Taking New Clients</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Landing Page Sprints</a></li>
+            <li><a href="#services">Custom Web Development</a></li>
+            <li><a href="#services">Website Care & Maintenance</a></li>
+            <li><a href="#services">Speed & SEO Tuning</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Interactive</h4>
+          <ul class="footer-links">
+            <li><a href="#estimator">Build Inspector</a></li>
+            <li><a href="#pricing">Project Pricing</a></li>
+            <li><a href="#pricing">Maintenance Plans</a></li>
+            <li><a href="#contact" class="js-open-modal">Get Free Quote</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Tundra Tech</a></li>
+            <li><a href="#">Portfolio Showcase</a></li>
+            <li><a href="#">Client Reviews</a></li>
+            <li><a href="#contact" class="js-open-modal">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Tundra Tech Web Development. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: var(--text-dim); text-decoration: none;">Twitter / X</a>
+          <a href="#" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
+          <a href="#" style="color: var(--text-dim); text-decoration: none;">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Contact / Project Quote Modal -->
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Start Your Web Project</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+        Tell us about your website or landing page goals. We'll send a free proposal within 24 hours.
+      </p>
+
+      <form id="modal-form" action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe">
+        <input type="hidden" id="form-access-key" name="access_key" value="5669f8be-a599-46f3-b54a-67294e49c62d">
+        <input type="hidden" name="subject" value="⚡ New Tundra Tech Website Lead!">
+        <input type="hidden" name="from_name" value="Tundra Tech Landing Page">
+        
+        <input type="text" name="name" id="form-name" class="input-field" placeholder="Your Name" required>
+        <input type="email" name="email" id="form-email" class="input-field" placeholder="Email Address (e.g. yourname@domain.com)" required>
+        <input type="text" name="website" id="form-website" class="input-field" placeholder="Business Name or Current Website URL">
+        <textarea name="message" id="form-message" class="input-field" style="height: 90px; resize: none;" placeholder="Briefly describe your project (Landing page, full redesign, maintenance, etc.)" required></textarea>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Get Free Proposal</button>
+      </form>
+    </div>
+  </div>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <script src="glacier.js"></script>
+</body>
+</html>
