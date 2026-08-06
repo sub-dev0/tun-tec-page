@@ -5,9 +5,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   initGlacierCanvas();
   initNavbarScroll();
-  initSimulator();
   initPricingToggle();
   initContactModal();
+  initPortfolioLightbox();
 });
 
 /* ==========================================================================
@@ -406,3 +406,100 @@ function initContactModal() {
     });
   }
 }
+
+/* ==========================================================================
+   6. PORTFOLIO SHOWCASE CATEGORY FILTERING
+   ========================================================================== */
+function initPortfolioShowcase() {
+  const filterBtns = document.querySelectorAll('.filter-pill');
+  const cards = document.querySelectorAll('.showcase-card');
+
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterVal = btn.getAttribute('data-filter') || 'all';
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filterVal === 'all' || category === filterVal) {
+          card.classList.remove('hide');
+        } else {
+          card.classList.add('hide');
+        }
+      });
+    });
+  });
+}
+
+/* ==========================================================================
+   7. PORTFOLIO LIGHTBOX MODAL (High-Resolution Project Preview & Specs)
+   ========================================================================== */
+function initPortfolioLightbox() {
+  const backdrop = document.getElementById('lightbox-backdrop');
+  const closeBtn = document.getElementById('lightbox-close');
+  const triggers = document.querySelectorAll('.js-lightbox-trigger');
+
+  const titleEl = document.getElementById('lightbox-title');
+  const categoryEl = document.getElementById('lightbox-category');
+  const descEl = document.getElementById('lightbox-desc');
+  const techEl = document.getElementById('lightbox-tech');
+  const speedEl = document.getElementById('lightbox-speed');
+  const scoreEl = document.getElementById('lightbox-score');
+  const imgEl = document.getElementById('lightbox-img');
+
+  if (!backdrop) return;
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const title = trigger.getAttribute('data-title') || 'Project Showcase';
+      const category = trigger.getAttribute('data-category') || 'Brick & Mortar';
+      const desc = trigger.getAttribute('data-desc') || '';
+      const tech = trigger.getAttribute('data-tech') || '';
+      const speed = trigger.getAttribute('data-speed') || '0.3s';
+      const score = trigger.getAttribute('data-score') || '99/100';
+      const img = trigger.getAttribute('data-img') || '';
+
+      if (titleEl) titleEl.textContent = title;
+      if (categoryEl) categoryEl.textContent = category;
+      if (descEl) descEl.textContent = desc;
+      if (techEl) techEl.textContent = tech;
+      if (speedEl) speedEl.textContent = speed;
+      if (scoreEl) scoreEl.textContent = score;
+      if (imgEl && img) imgEl.setAttribute('src', img);
+
+      backdrop.classList.add('active');
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      backdrop.classList.remove('active');
+    });
+  }
+
+  const closeModalTriggers = document.querySelectorAll('.js-close-lightbox');
+  closeModalTriggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      backdrop.classList.remove('active');
+    });
+  });
+
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      backdrop.classList.remove('active');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('active')) {
+      backdrop.classList.remove('active');
+    }
+  });
+}
+
