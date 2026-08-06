@@ -1109,8 +1109,11 @@ h1, h2, h3, h4, .brand-name {
 /* Live Deployed Projects Grid */
 .live-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
+  justify-content: center;
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .live-card {
@@ -1119,6 +1122,15 @@ h1, h2, h3, h4, .brand-name {
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 240, 255, 0.15);
 }
 
 .live-indicator {
