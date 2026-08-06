@@ -238,6 +238,57 @@ h1, h2, h3, h4, .brand-name {
   gap: 16px;
 }
 
+.nav-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.nav-phone-link svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.nav-phone-link:hover {
+  color: var(--color-primary);
+  border-color: var(--border-glow);
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.footer-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  transition: var(--transition);
+  margin-top: 10px;
+}
+
+.footer-phone-link svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.footer-phone-link:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--color-primary);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;

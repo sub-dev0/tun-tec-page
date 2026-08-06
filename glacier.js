@@ -333,7 +333,7 @@ function initContactModal() {
       const email = document.getElementById('form-email')?.value || '';
       const website = document.getElementById('form-website')?.value || '';
       const message = document.getElementById('form-message')?.value || '';
-      const accessKey = document.getElementById('form-access-key')?.value || '5669f8be-a599-46f3-b54a-67294e49c62d';
+      const accessKey = document.getElementById('form-access-key')?.value || 'cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1';
 
       const submitBtn = modalForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : 'Get Free Proposal';
@@ -368,7 +368,7 @@ function initContactModal() {
 
         // Fallback to FormSubmit AJAX
         if (!sent) {
-          await fetch('https://formsubmit.co/ajax/lycan5054@gmail.com', {
+          await fetch('https://formsubmit.co/ajax/alexander@tundratech.org', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
