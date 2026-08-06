@@ -1363,3 +1363,231 @@ h1, h2, h3, h4, .brand-name {
   }
 }
 
+/* ==========================================================================
+   About Us & Core Offerings Section Styling
+   ========================================================================== */
+.about-story-card {
+  padding: 44px;
+  border: 1px solid var(--border-glow);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75) 0%, rgba(7, 11, 18, 0.9) 100%);
+  margin-bottom: 50px;
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+.story-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 18px;
+  color: var(--text-main);
+}
+
+.story-p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.value-icon {
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  line-height: 1;
+}
+
+.value-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.value-item p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.about-story-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.story-stat-card {
+  background: rgba(7, 11, 18, 0.8);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.story-stat-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+.story-stat-card:hover {
+  border-color: var(--border-glow);
+  transform: translateX(6px);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.stat-big {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-sub {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.stat-detail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Offerings Title */
+.offerings-title-wrap {
+  text-align: center;
+  max-width: 600px;
+  margin: 60px auto 36px;
+}
+
+.offerings-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.offerings-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Offerings Grid */
+.about-offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.offering-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offering-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.offering-tag {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  background: rgba(0, 240, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.offering-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.offering-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dot-active {
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+  .about-story-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-story-card {
+    padding: 30px 24px;
+  }
+}
+
+
