@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPricingToggle();
   initContactModal();
   initPortfolioLightbox();
+  initLegalModals();
 });
 
 /* ==========================================================================
@@ -502,4 +503,76 @@ function initPortfolioLightbox() {
     }
   });
 }
+
+/* ==========================================================================
+   8. PRIVACY POLICY & END USER AGREEMENT MODALS
+   ========================================================================== */
+function initLegalModals() {
+  const privacyBackdrop = document.getElementById('privacy-backdrop');
+  const termsBackdrop = document.getElementById('terms-backdrop');
+
+  const openPrivacyBtns = document.querySelectorAll('.js-open-privacy');
+  const openTermsBtns = document.querySelectorAll('.js-open-terms');
+
+  const closePrivacyBtn = document.getElementById('privacy-modal-close');
+  const closeTermsBtn = document.getElementById('terms-modal-close');
+
+  const closePrivacyFooterBtn = document.querySelector('.js-close-privacy');
+  const closeTermsFooterBtn = document.querySelector('.js-close-terms');
+
+  // Open Privacy Modal
+  openPrivacyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (privacyBackdrop) privacyBackdrop.classList.add('active');
+    });
+  });
+
+  // Open Terms Modal
+  openTermsBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (termsBackdrop) termsBackdrop.classList.add('active');
+    });
+  });
+
+  // Close Privacy Modal
+  if (closePrivacyBtn && privacyBackdrop) {
+    closePrivacyBtn.addEventListener('click', () => privacyBackdrop.classList.remove('active'));
+  }
+  if (closePrivacyFooterBtn && privacyBackdrop) {
+    closePrivacyFooterBtn.addEventListener('click', () => privacyBackdrop.classList.remove('active'));
+  }
+  if (privacyBackdrop) {
+    privacyBackdrop.addEventListener('click', (e) => {
+      if (e.target === privacyBackdrop) privacyBackdrop.classList.remove('active');
+    });
+  }
+
+  // Close Terms Modal
+  if (closeTermsBtn && termsBackdrop) {
+    closeTermsBtn.addEventListener('click', () => termsBackdrop.classList.remove('active'));
+  }
+  if (closeTermsFooterBtn && termsBackdrop) {
+    closeTermsFooterBtn.addEventListener('click', () => termsBackdrop.classList.remove('active'));
+  }
+  if (termsBackdrop) {
+    termsBackdrop.addEventListener('click', (e) => {
+      if (e.target === termsBackdrop) termsBackdrop.classList.remove('active');
+    });
+  }
+
+  // Escape key handler for legal modals
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (privacyBackdrop && privacyBackdrop.classList.contains('active')) {
+        privacyBackdrop.classList.remove('active');
+      }
+      if (termsBackdrop && termsBackdrop.classList.contains('active')) {
+        termsBackdrop.classList.remove('active');
+      }
+    }
+  });
+}
+
 
