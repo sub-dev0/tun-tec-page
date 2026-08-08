@@ -186,6 +186,32 @@ function initGlacierCanvas() {
    ========================================================================== */
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
+  const toggle = document.getElementById('mobile-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('mobile-active');
+      toggle.classList.toggle('active');
+    });
+
+    const links = navLinks.querySelectorAll('.nav-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-active');
+        toggle.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) {
+        navLinks.classList.remove('mobile-active');
+        toggle.classList.remove('active');
+      }
+    });
+  }
+
   if (!navbar) return;
 
   window.addEventListener('scroll', () => {
