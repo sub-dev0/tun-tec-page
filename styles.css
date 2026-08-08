@@ -2,40 +2,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color System */
-  --bg-dark: #070b12;
-  --bg-deep: #0b111e;
-  --bg-card: rgba(15, 23, 42, 0.65);
-  --bg-card-hover: rgba(24, 37, 66, 0.85);
+  /* Color System - Enterprise MSP Dark Theme */
+  --bg-dark: #070c16;
+  --bg-deep: #0b1325;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --bg-card-hover: rgba(22, 36, 64, 0.9);
   --bg-glass: rgba(255, 255, 255, 0.03);
   
-  --color-primary: #00f0ff;
-  --color-primary-glow: rgba(0, 240, 255, 0.35);
-  --color-secondary: #38bdf8;
-  --color-accent: #a855f7;
-  --color-frost: #93c5fd;
+  --color-primary: #06b6d4;
+  --color-primary-glow: rgba(6, 182, 212, 0.25);
+  --color-secondary: #0284c7;
+  --color-accent: #6366f1;
+  --color-frost: #bae6fd;
   
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   
   --border-light: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 240, 255, 0.25);
-  --border-active: rgba(0, 240, 255, 0.6);
+  --border-glow: rgba(6, 182, 212, 0.25);
+  --border-active: rgba(6, 182, 212, 0.5);
   
   /* Typography */
   --font-heading: 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
   
   /* Layout & Shadows */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
   --radius-full: 9999px;
   
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  --glow-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
-  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --glass-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.5);
+  --glow-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Global */
@@ -69,6 +69,7 @@ body {
   height: 100vh;
   z-index: -1;
   pointer-events: none;
+  opacity: 0.45;
 }
 
 /* Overlay gradient for depth */
@@ -79,9 +80,9 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: radial-gradient(circle at 50% 20%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
-              linear-gradient(180deg, rgba(7, 11, 18, 0.2) 0%, rgba(7, 11, 18, 0.9) 100%);
+  background: radial-gradient(circle at 50% 10%, rgba(6, 182, 212, 0.05) 0%, transparent 60%),
+              radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+              linear-gradient(180deg, rgba(7, 12, 22, 0.4) 0%, rgba(7, 12, 22, 0.95) 100%);
   pointer-events: none;
 }
 
@@ -92,34 +93,85 @@ h1, h2, h3, h4, .brand-name {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #00f0ff 100%);
+  background: linear-gradient(135deg, #ffffff 20%, #bae6fd 60%, #06b6d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #38bdf8 0%, #00f0ff 50%, #a855f7 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #818cf8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Containers */
+/* Containers - Full Width 1440px Layout */
 .container {
-  max-width: 1240px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
+}
+
+/* Top NOC Status Bar */
+.top-bar {
+  background: #040810;
+  border-bottom: 1px solid var(--border-light);
+  padding: 8px 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar-status .status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+}
+
+.top-bar-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-bar-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.top-bar-link:hover {
+  color: var(--text-main);
 }
 
 /* Navbar */
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 16px 0;
+  background: rgba(7, 12, 22, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
   transition: var(--transition);
 }
 
@@ -1135,10 +1187,9 @@ h1, h2, h3, h4, .brand-name {
 /* Live Deployed Projects Grid */
 .live-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 360px));
-  justify-content: center;
-  gap: 28px;
-  max-width: 1140px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1148,8 +1199,8 @@ h1, h2, h3, h4, .brand-name {
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  max-width: 360px;
   width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1884,6 +1935,239 @@ h1, h2, h3, h4, .brand-name {
     padding: 24px 20px;
   }
 }
+
+/* ==========================================================================
+   MSP Enterprise Utility & Trust Signal Styling
+   ========================================================================== */
+
+/* SVG Icon Badges */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.icon-box:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--color-primary);
+}
+
+.icon-box-accent {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+}
+
+.icon-box-green {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+/* Enterprise MSP Trust Strip */
+.trust-strip {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 36px 0;
+  margin: 60px 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.trust-item:hover {
+  border-color: var(--border-glow);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.trust-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.trust-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* SLA Badge Pill */
+.sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-frost);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tech-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* Infrastructure Telemetry Dashboard Styling */
+.infra-dashboard {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--glass-shadow);
+}
+
+.infra-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 24px;
+}
+
+.infra-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.infra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.node-status-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.node-status-card:hover {
+  border-color: var(--border-glow);
+  background: rgba(22, 36, 64, 0.85);
+}
+
+.node-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.node-name {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.node-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #34d399;
+  font-family: monospace;
+}
+
+.node-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.node-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), #34d399);
+  border-radius: 3px;
+}
+
+.node-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* SLA Technical Comparison Matrix Table */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+}
+
+.sla-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.sla-table th {
+  padding: 18px 24px;
+  background: rgba(11, 19, 37, 0.95);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sla-table td {
+  padding: 16px 24px;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sla-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.sla-table td strong {
+  color: var(--text-main);
+}
+
+
 
 
 

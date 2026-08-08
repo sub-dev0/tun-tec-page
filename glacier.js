@@ -352,7 +352,7 @@ function initContactModal() {
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             access_key: accessKey,
-            subject: `⚡ New Tundra Tech Inquiry from ${name}`,
+            subject: `[MSP Inquiry] New Lead from ${name}`,
             from_name: 'Tundra Tech Landing Page',
             name: name,
             email: email,
@@ -373,7 +373,7 @@ function initContactModal() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
-              _subject: `⚡ New Tundra Tech Lead from ${name}`,
+              _subject: `[MSP Inquiry] New Lead from ${name}`,
               _captcha: 'false',
               name: name,
               email: email,
@@ -384,13 +384,13 @@ function initContactModal() {
         }
 
         if (submitBtn) {
-          submitBtn.textContent = '⚡ Request Sent Successfully!';
+          submitBtn.textContent = 'Request Sent Successfully!';
           submitBtn.style.background = '#10b981';
         }
       } catch (err) {
         console.warn('Form submit notice:', err);
         if (submitBtn) {
-          submitBtn.textContent = '⚡ Request Sent!';
+          submitBtn.textContent = 'Request Sent!';
           submitBtn.style.background = '#10b981';
         }
       }
