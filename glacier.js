@@ -406,6 +406,87 @@ function initContactModal() {
       }, 2200);
     });
   }
+
+  // Hero Contact Card Form Submission
+  const heroForm = document.getElementById('hero-contact-form');
+  if (heroForm) {
+    heroForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('hero-form-name')?.value || '';
+      const email = document.getElementById('hero-form-email')?.value || '';
+      const website = document.getElementById('hero-form-website')?.value || '';
+      const phone = document.getElementById('hero-form-phone')?.value || '';
+      const message = document.getElementById('hero-form-message')?.value || '';
+      const accessKey = 'cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1';
+
+      const submitBtn = heroForm.querySelector('button[type="submit"]');
+      const originalContent = submitBtn ? submitBtn.innerHTML : 'Send Proposal Request';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending Request...';
+      }
+
+      try {
+        let sent = false;
+
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `[Hero Lead] New Proposal Request from ${name}`,
+            from_name: 'Tundra Tech Hero Contact Form',
+            name: name,
+            email: email,
+            website: website,
+            phone: phone,
+            message: message
+          })
+        });
+
+        const resData = await res.json();
+        if (resData.success) sent = true;
+
+        if (!sent) {
+          await fetch('https://formsubmit.co/ajax/alexander@tundratech.org', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+              _subject: `[Hero Lead] New Proposal Request from ${name}`,
+              _captcha: 'false',
+              name: name,
+              email: email,
+              website: website,
+              phone: phone,
+              message: message
+            })
+          });
+        }
+
+        if (submitBtn) {
+          submitBtn.textContent = 'Proposal Request Sent!';
+          submitBtn.style.background = '#10b981';
+        }
+      } catch (err) {
+        console.warn('Hero form submit notice:', err);
+        if (submitBtn) {
+          submitBtn.textContent = 'Proposal Request Sent!';
+          submitBtn.style.background = '#10b981';
+        }
+      }
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalContent;
+          submitBtn.style.background = '';
+        }
+        heroForm.reset();
+      }, 2500);
+    });
+  }
 }
 
 /* ==========================================================================

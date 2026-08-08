@@ -52,33 +52,79 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-pill">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        Full-Service Web & Infrastructure Managed Service Provider
-      </div>
+      <div class="hero-grid">
+        <div class="hero-text-col">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Full-Service Web & Infrastructure Managed Service Provider
+          </div>
 
-      <h1 class="hero-title">
-        Chill Out. <span class="text-gradient">We’ll Take It from Here.</span>
-      </h1>
+          <h1 class="hero-title">
+            Chill Out. <span class="text-gradient">We’ll Take It from Here.</span>
+          </h1>
 
-      <p class="hero-subtitle">
-        Not just another website builder. We are a fully functional Web & Infrastructure MSP—engineering custom websites, managing cloud servers, handling zero-downtime migrations, and providing proactive 24/7 security.
-      </p>
+          <p class="hero-subtitle">
+            Not just another website builder. We are a fully functional Web & Infrastructure MSP—engineering custom websites, managing cloud servers, handling zero-downtime migrations, and providing proactive 24/7 security.
+          </p>
 
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary js-open-modal" id="hero-primary-cta">
-          Start Your Web Project
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-        <a href="#pricing" class="btn btn-secondary" id="hero-secondary-cta">
-          Explore Packages & SLAs
-        </a>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary js-open-modal" id="hero-primary-cta">
+              Start Your Web Project
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#pricing" class="btn btn-secondary" id="hero-secondary-cta">
+              Explore Packages & SLAs
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card-col">
+          <div class="glass-card hero-contact-card">
+            <div class="hero-card-header">
+              <span class="hero-card-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Fast 24-Hour Proposal
+              </span>
+              <h3 class="hero-card-title">Get a Free Proposal</h3>
+              <p class="hero-card-sub">Fill out the form below & get a response within 24 hours.</p>
+            </div>
+
+            <form id="hero-contact-form" class="hero-form" action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe">
+              <input type="hidden" name="access_key" value="cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1">
+              <input type="hidden" name="subject" value="New Hero Contact Lead from Tundra Tech!">
+              <input type="hidden" name="from_name" value="Tundra Tech Hero Contact Form">
+
+              <div class="form-row">
+                <input type="text" name="name" id="hero-form-name" class="input-field" placeholder="Your Full Name *" required>
+                <input type="email" name="email" id="hero-form-email" class="input-field" placeholder="Email Address *" required>
+              </div>
+
+              <div class="form-row">
+                <input type="text" name="website" id="hero-form-website" class="input-field" placeholder="Business Name or Website *" required>
+                <input type="tel" name="phone" id="hero-form-phone" class="input-field" placeholder="Phone Number (Optional)">
+              </div>
+
+              <textarea name="message" id="hero-form-message" class="input-field hero-textarea"
+                placeholder="Describe your project (Custom Web, Product Pages, Logo Design, etc.) *" required></textarea>
+
+              <button type="submit" class="btn btn-primary hero-submit-btn">
+                Send Proposal Request
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
 
       <!-- Hero Metrics Bar -->
