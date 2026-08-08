@@ -2150,10 +2150,17 @@ h1, h2, h3, h4, .brand-name {
   letter-spacing: 0.05em;
 }
 
-.tech-grid-6 {
+.tech-grid-6,
+.solutions-grid-4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 868px) {
+  .solutions-grid-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Infrastructure Telemetry Dashboard Styling */
