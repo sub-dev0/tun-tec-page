@@ -2318,11 +2318,16 @@ h1, h2, h3, h4, .brand-name {
   letter-spacing: 0.05em;
 }
 
-.tech-grid-6,
-.solutions-grid-4 {
+.tech-grid-6 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
+}
+
+.solutions-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 /* Dedicated Support Channel Highlight Callout Styling */
@@ -2377,9 +2382,17 @@ h1, h2, h3, h4, .brand-name {
   line-height: 1.5;
 }
 
-@media (max-width: 868px) {
+@media (max-width: 1200px) {
+  .solutions-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
   .solutions-grid-4 {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .support-channel-highlight {
     flex-direction: column;
