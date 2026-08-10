@@ -570,18 +570,6 @@
               <span>Load: 11%</span>
             </div>
           </div>
-
-          <div class="node-status-card" id="anti-bot-telemetry-card">
-            <div class="node-card-header">
-              <span class="node-name" style="color: var(--color-primary);">WAYBACK ANTI-BOT DEFENSE</span>
-              <span class="node-live-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);"><span class="pulse-dot" style="background: #10b981;"></span> ACTIVE</span>
-            </div>
-            <div class="node-progress-bar"><div class="node-progress-fill" style="width: 100%; background: linear-gradient(90deg, #10b981, #00f0ff);"></div></div>
-            <div class="node-meta">
-              <span>Wayback Defense: BLOCKING</span>
-              <span>Scanner: Active Guard</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -679,47 +667,39 @@
     </div>
   </section>
 
-  <!-- 5. Packages & Pricing Section with SLA Comparison Matrix -->
+  <!-- 5. Packages & Pricing Section with SLA Comparison & Pass-Through Scope -->
   <section class="section" id="pricing">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Packages & Pricing</span>
+        <span class="section-tag">Transparent Service Scope</span>
         <h2 class="section-title">Transparent Project & Care Plans</h2>
-        <p class="section-desc">Choose between a custom build project or an ongoing monthly website care plan.</p>
+        <p class="section-desc">Choose between a custom build project or an ongoing monthly website care plan. Complete transparency on domain ownership, hosting tiers, and pass-through subscriptions.</p>
       </div>
 
-      <div class="pricing-toggle-wrap">
-        <span>One-Time Project Build</span>
-        <div class="pricing-toggle" id="pricing-toggle">
+      <div class="pricing-toggle-wrap" id="pricing-toggle-wrap">
+        <span id="label-onetime" style="cursor: pointer; transition: var(--transition);">One-Time Custom Builds</span>
+        <div class="pricing-toggle" id="pricing-toggle" style="cursor: pointer;">
           <div class="pricing-toggle-thumb"></div>
         </div>
-        <span>Monthly Web Care & Maintenance</span>
+        <span id="label-monthly" style="cursor: pointer; transition: var(--transition);">Monthly Web Care & Maintenance ($199/mo)</span>
       </div>
 
-      <div class="pricing-grid">
+      <!-- 1. One-Time Build Grid (3 Cards - Displayed by default) -->
+      <div class="pricing-grid" id="pricing-grid-onetime">
         <!-- Plan 1 -->
         <div class="glass-card price-card">
           <div>
             <h3 class="card-title">Landing Page Sprint</h3>
-            <p class="card-text">Perfect for product launches, marketing campaigns, & local businesses.</p>
+            <p class="card-text">Custom high-converting landing page built for campaigns & local business growth.</p>
             <div class="price-amount">
-              $<span class="price-val" data-monthly="1,299" data-annual="149">1,299</span>
-              <span class="price-period" data-period-monthly=" one-time" data-period-annual=" / mo care">
-                one-time</span>
+              $1,299 <span class="price-period">one-time</span>
             </div>
             <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Custom High-Conversion Design</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> 100% Mobile & Responsive</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Google Lighthouse 95+ Speed</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> On-Page SEO Setup</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom High-Conversion Landing Build</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 100% Mobile & Responsive Design</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Google Lighthouse 95+ Page Speed</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> On-Page Technical SEO & Lead Forms</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Includes 2 Design Revision Rounds</li>
             </ul>
           </div>
           <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Book Sprint</a>
@@ -730,68 +710,199 @@
           <span class="featured-badge">Most Popular</span>
           <div>
             <h3 class="card-title" style="color: var(--color-primary);">Full Web Studio Package</h3>
-            <p class="card-text">Complete multi-page custom website designed and maintained for growth.</p>
+            <p class="card-text">Complete multi-page custom website designed and engineered for long-term growth.</p>
             <div class="price-amount">
-              $<span class="price-val" data-monthly="2,799" data-annual="299">2,799</span>
-              <span class="price-period" data-period-monthly=" one-time" data-period-annual=" / mo care">
-                one-time</span>
+              $2,799 <span class="price-period">one-time</span>
             </div>
             <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Multi-Page Custom Website & Product Pages</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Logo Design & Brand Identity Package</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Modern Glassmorphism & Animations</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Advanced Lead Capture & Contact Forms</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Monthly Content Updates & Backups Included</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Direct Engineer Support via Dedicated Slack Channel & 24/7 Emergency Escalation</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-Page Custom Website Architecture</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Logo Design & Visual Brand Style Guide</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Glassmorphism UI & Micro-Animations</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced Lead Capture & Contact Workflows</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Includes 3 Design Revision Rounds</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct Slack Channel & Engineer Onboarding</li>
             </ul>
           </div>
-          <a href="#contact" class="btn btn-primary js-open-modal" style="width: 100%;">Start Project</a>
+          <a href="#contact" class="btn btn-primary js-open-modal" style="width: 100%;">Start Custom Build</a>
         </div>
 
         <!-- Plan 3 -->
         <div class="glass-card price-card">
           <div>
-            <h3 class="card-title">Custom Agency Retainer</h3>
-            <p class="card-text">Dedicated web team for ongoing development, redesigns, & enterprise care.</p>
+            <h3 class="card-title">Rebuilds, Migrations & Retainers</h3>
+            <p class="card-text">Major site redesigns, data migrations, e-commerce storefronts, & custom APIs.</p>
             <div class="price-amount">
-              Custom
+              Custom Quote
             </div>
             <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Unlimited Page Additions & Updates</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Dedicated Lead Web Developer</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Custom Web App & API Integrations</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Direct Engineer Support via Dedicated Slack Channel & 24/7 Emergency Escalation</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> 99.99% Uptime Guarantee & SLA</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Site Rebuilds & Major Overhauls</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Legacy Database, CMS & Mail Migrations</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> E-Commerce & Third-Party API Integrations</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Lead Web Engineer Bandwidth</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 99.99% Uptime Guarantee & SLA</li>
             </ul>
           </div>
           <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Contact Us</a>
         </div>
       </div>
 
+      <!-- 2. Monthly Care Single Card (1 Spotlight Card - Hidden by default, shown when toggled) -->
+      <div id="pricing-grid-monthly" style="display: none;">
+        <div class="glass-card price-card-single">
+          <span class="featured-badge">All-Inclusive Care Plan</span>
+          <div class="single-price-header">
+            <h3 class="card-title" style="font-size: 2.2rem; color: var(--color-primary); margin-bottom: 8px;">Managed Care Plan</h3>
+            <p class="card-text" style="font-size: 1.1rem; max-width: 640px; margin: 0 auto 12px;">
+              Complete ongoing website care, proactive 24/7 security defense, base edge hosting, continuous site updates, and dedicated engineer support—all bundled into one predictable monthly fee.
+            </p>
+            <div class="single-price-amount">
+              <span style="font-size: 2rem; vertical-align: top; line-height: 1;">$</span>199
+              <span class="price-period" style="font-size: 1.2rem; color: var(--text-muted); font-weight: 500;">/ month</span>
+            </div>
+            <span style="display: inline-block; font-size: 0.85rem; color: #10b981; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px;">
+              ✓ Requires Initial One-Time Build • Cancel Anytime • $0 Upcharges
+            </span>
+          </div>
+
+          <!-- Prerequisite Build Requirement & Flexibility Callout Box -->
+          <div style="background: rgba(234, 179, 8, 0.07); border: 1px solid rgba(234, 179, 8, 0.28); border-radius: var(--radius-md); padding: 16px 22px; margin: 18px 0 28px; text-align: left; display: flex; align-items: flex-start; gap: 14px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2.2" style="flex-shrink: 0; margin-top: 2px;">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              <strong style="color: #facc15; font-size: 0.95rem; display: block; margin-bottom: 3px;">Prerequisite Build Policy & Flexible Retainer:</strong>
+              Clients must select an initial <strong>One-Time Project Build</strong> (Landing Page Sprint or Full Web Studio Package) prior to subscribing to our monthly care retainer. Once your custom site is launched, your $199/mo care plan operates on a flexible month-to-month basis with <strong>no long-term contracts</strong>—cancel anytime with 30 days notice.
+            </div>
+          </div>
+
+          <div class="single-price-features">
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Proactive 24/7 Security Defense & Patching</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Continuous vulnerability scanning, WAF defense, and automated patching standard.</p>
+              </div>
+            </div>
+
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Base Shared Edge Cloud Hosting Included</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">High-speed static edge CDN hosting up to 5 GB storage & basic traffic limit included ($0 extra).</p>
+              </div>
+            </div>
+
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Ongoing Content & Minor Layout Edits</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Ongoing text edits, image updates, and minor layout tweaks included ($0 hourly fees).</p>
+              </div>
+            </div>
+
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Daily Offsite Cloud Snapshots & Disaster Recovery</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Automated daily cloud backups ensuring rapid data restoration.</p>
+              </div>
+            </div>
+
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Google Lighthouse 95+ Core Vitals Maintenance</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Continuous speed optimization and structured schema SEO maintenance.</p>
+              </div>
+            </div>
+
+            <div class="price-feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <strong>Direct Private Slack Channel & 24/7 Escalation</strong>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Direct 1-on-1 access to lead engineers with priority emergency response SLA.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 20px;">
+            <a href="#contact" class="btn btn-primary js-open-modal" style="padding: 16px 40px; font-size: 1.1rem; justify-content: center; width: 100%; max-width: 420px;">
+              Subscribe to Care Plan ($199/mo)
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transparent Service Scope & Pass-Through Costs Breakdown Grid -->
+      <div class="scope-breakdown-section">
+        <h3 style="font-size: 1.6rem; text-align: center; margin-bottom: 8px;">Transparent Service Scope & Pass-Through Breakdown</h3>
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; max-width: 680px; margin: 0 auto 32px;">
+          We believe in complete transparency. Here is exactly how domain ownership, hosting tiers, third-party subscriptions, and major project scopes are handled.
+        </p>
+
+        <div class="scope-grid">
+          <!-- Card 1: Domain Names -->
+          <div class="scope-card">
+            <div class="scope-card-header">
+              <div class="icon-box" style="width: 40px; height: 40px; font-size: 1rem;">🌐</div>
+              <h4>Domain Name Ownership & Administration</h4>
+            </div>
+            <ul class="scope-list">
+              <li><strong>Option A (Best Practice — Client Owned)</strong>: Client purchases & retains 100% direct domain ownership on their registrar (Namecheap, Cloudflare, Google), delegating admin DNS access to us ($0 fee).</li>
+              <li><strong>Option B (Managed Re-billing)</strong>: If we register & manage the domain for you, it is billed annually at direct registrar cost + standard $15–$25/year for DNS administration.</li>
+              <li><strong>SSL & DNSSEC Security (Included)</strong>: Free automated SSL/TLS encryption certificates, DNSSEC setup, and Cloudflare CDN proxy routing included on all managed domains ($0 extra).</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Hosting & Workspace Email -->
+          <div class="scope-card">
+            <div class="scope-card-header">
+              <div class="icon-box icon-box-green" style="width: 40px; height: 40px; font-size: 1rem;">⚡</div>
+              <h4>Hosting Tiers & Workspace Emails</h4>
+            </div>
+            <ul class="scope-list">
+              <li><strong>Base Hosting Included</strong>: Shared static edge CDN hosting (up to 5 GB storage / basic traffic) is included at $0 extra within your $199/mo care plan.</li>
+              <li><strong>Dedicated / E-Commerce Add-Ons</strong>: Dedicated VPS servers, e-commerce engines (Shopify, WooCommerce), or managed WP Engine/Kinsta environments listed as separate line items (+$30 to $100+/mo).</li>
+              <li><strong>Email & Workspaces</strong>: Google Workspace, Microsoft 365, or custom email hosting billed directly pass-through at cost.</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Premium Plugins, APIs & Branding -->
+          <div class="scope-card">
+            <div class="scope-card-header">
+              <div class="icon-box icon-box-accent" style="width: 40px; height: 40px; font-size: 1rem;">🔌</div>
+              <h4>Plugins, APIs & Graphic Revisions</h4>
+            </div>
+            <ul class="scope-list">
+              <li><strong>Premium Plugins & APIs</strong>: Commercial WP plugins (Elementor Pro, Form builders), paid booking engines, or external API licenses billed pass-through at direct provider cost.</li>
+              <li><strong>Branding & Logo Revisions</strong>: Initial builds include structured revision rounds (2–3 rounds). Full rebrands, new vector logo marks, or extensive graphic design carry dedicated one-time fees.</li>
+              <li><strong>Custom Code First Strategy</strong>: We write clean, lightweight custom code whenever possible to avoid unnecessary commercial plugin subscriptions, saving you recurring software fees.</li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Initial Rebuilds & Data Migrations -->
+          <div class="scope-card">
+            <div class="scope-card-header">
+              <div class="icon-box" style="width: 40px; height: 40px; font-size: 1rem;">🚚</div>
+              <h4>Site Rebuilds & Data Migrations</h4>
+            </div>
+            <ul class="scope-list">
+              <li><strong>Initial Build Prerequisite</strong>: All $199/mo care plans require an initial One-Time Project Build (Landing Page Sprint or Full Web Studio Package) upfront to cover initial design & custom engineering before subscribing to the monthly maintenance retainer.</li>
+              <li><strong>Maintenance vs Full Rebuilds</strong>: Your $199/mo plan covers ongoing care, security, and minor content updates. Complete site redesigns, new page additions, or structural overhauls quoted as separate initial project fees.</li>
+              <li><strong>Data & Mail Migrations</strong>: Transferring legacy websites, complex databases, or corporate mail servers from old providers quoted as one-time migration services.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <!-- Dedicated Support Channel Highlight Callout -->
-      <div class="glass-card support-channel-highlight">
+      <div class="glass-card support-channel-highlight" style="margin-top: 40px;">
         <div class="support-highlight-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -799,69 +910,8 @@
         </div>
         <div class="support-highlight-text">
           <span class="support-highlight-badge">Dedicated Communication Channels</span>
-          <h4>Direct Engineer Support via Dedicated Slack Channel & 24/7 Emergency Escalation</h4>
+          <h4>Direct Engineer Support via Private Slack & 24/7 Escalation</h4>
           <p>Get instant response times and direct 1-on-1 access to senior web engineers via your private Slack channel, paired with 24/7 emergency escalation for critical issues.</p>
-        </div>
-      </div>
-
-      <!-- Technical SLA Comparison Table -->
-      <div style="margin-top: 50px;">
-        <h3 style="font-size: 1.6rem; text-align: center; margin-bottom: 24px;">Technical SLA & Service Comparison</h3>
-        <div class="table-wrap">
-          <table class="sla-table">
-            <thead>
-              <tr>
-                <th>Deliverable / Technical SLA</th>
-                <th>Landing Sprint</th>
-                <th>Managed MSP Retainer</th>
-                <th>Enterprise Retainer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Custom Code Architecture</strong></td>
-                <td>Includes 1 Page</td>
-                <td>Up to 10 Pages</td>
-                <td>Unlimited Pages</td>
-              </tr>
-              <tr>
-                <td><strong>Support Channels & Communication</strong></td>
-                <td>Direct Email Support</td>
-                <td>Dedicated Slack Channel & 24/7 Support</td>
-                <td>Direct Engineer Support via Dedicated Slack Channel & 24/7 Emergency Escalation</td>
-              </tr>
-              <tr>
-                <td><strong>Target Page Speed</strong></td>
-                <td>&lt; 0.4s</td>
-                <td>&lt; 0.35s (Global Edge)</td>
-                <td>&lt; 0.25s Dedicated Node</td>
-              </tr>
-              <tr>
-                <td><strong>Uptime SLA Commitment</strong></td>
-                <td>99.9% Target</td>
-                <td>99.99% Guaranteed SLA</td>
-                <td>99.99% Guaranteed SLA</td>
-              </tr>
-              <tr>
-                <td><strong>Offsite Cloud Backups</strong></td>
-                <td>Weekly Backup</td>
-                <td>Daily Offsite Snapshots</td>
-                <td>Real-time Database Sync</td>
-              </tr>
-              <tr>
-                <td><strong>Support SLA Response Time</strong></td>
-                <td>48-Hour Turnaround</td>
-                <td>24-Hour Developer Support</td>
-                <td>15-Minute Emergency SLA</td>
-              </tr>
-              <tr>
-                <td><strong>Security Patching & WAF</strong></td>
-                <td>Standard Setup</td>
-                <td>Active 24/7 Monitoring</td>
-                <td>Dedicated Firewall & SOC</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
@@ -1167,7 +1217,7 @@
 
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-  <script src="glacier.js"></script>
+  <script src="glacier.js?v=3"></script>
   <!-- Counter.dev Privacy Analytics -->
   <script src="https://cdn.counter.dev/script.js" data-id="001f682b-993e-48af-99c7-41fc0d44f72b"
     data-utcoffset="-4"></script>

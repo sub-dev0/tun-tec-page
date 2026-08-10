@@ -294,33 +294,80 @@ function initSimulator() {
    4. PRICING BILLING TOGGLE (One-Time Build vs Monthly Care Package)
    ========================================================================== */
 function initPricingToggle() {
+  const toggleWrap = document.getElementById('pricing-toggle-wrap');
   const toggle = document.getElementById('pricing-toggle');
-  const priceValues = document.querySelectorAll('.price-val');
-  const pricePeriods = document.querySelectorAll('.price-period');
-  
-  if (!toggle) return;
+  const labelOnetime = document.getElementById('label-onetime');
+  const labelMonthly = document.getElementById('label-monthly');
+  const gridOnetime = document.getElementById('pricing-grid-onetime');
+  const gridMonthly = document.getElementById('pricing-grid-monthly');
 
-  let isMonthlyCare = false;
+  if (!gridOnetime || !gridMonthly) return;
 
-  toggle.addEventListener('click', () => {
-    isMonthlyCare = !isMonthlyCare;
-    toggle.classList.toggle('active', isMonthlyCare);
+  let isMonthly = false;
 
-    priceValues.forEach(el => {
-      const buildPrice = el.dataset.monthly; // One-time build
-      const carePrice = el.dataset.annual;   // Monthly care retainer
-      
-      if (buildPrice && carePrice) {
-        el.textContent = isMonthlyCare ? carePrice : buildPrice;
+  function renderMode(monthly) {
+    isMonthly = monthly;
+
+    if (toggle) {
+      if (isMonthly) {
+        toggle.classList.add('active');
+      } else {
+        toggle.classList.remove('active');
       }
-    });
+    }
 
-    pricePeriods.forEach(el => {
-      if (el.dataset.periodMonthly && el.dataset.periodAnnual) {
-        el.textContent = isMonthlyCare ? el.dataset.periodAnnual : el.dataset.periodMonthly;
-      }
-    });
-  });
+    if (labelOnetime) {
+      labelOnetime.style.color = isMonthly ? 'var(--text-muted)' : 'var(--color-primary)';
+      labelOnetime.style.fontWeight = isMonthly ? '400' : '700';
+    }
+    if (labelMonthly) {
+      labelMonthly.style.color = isMonthly ? 'var(--color-primary)' : 'var(--text-muted)';
+      labelMonthly.style.fontWeight = isMonthly ? '700' : '400';
+    }
+
+    if (isMonthly) {
+      gridOnetime.classList.add('inactive');
+      gridOnetime.style.display = 'none';
+
+      gridMonthly.classList.add('active');
+      gridMonthly.style.display = 'block';
+    } else {
+      gridOnetime.classList.remove('inactive');
+      gridOnetime.style.display = 'grid';
+
+      gridMonthly.classList.remove('active');
+      gridMonthly.style.display = 'none';
+    }
+  }
+
+  if (toggleWrap) {
+    toggleWrap.onclick = function(e) {
+      renderMode(!isMonthly);
+    };
+  }
+
+  if (labelOnetime) {
+    labelOnetime.onclick = function(e) {
+      e.stopPropagation();
+      renderMode(false);
+    };
+  }
+
+  if (labelMonthly) {
+    labelMonthly.onclick = function(e) {
+      e.stopPropagation();
+      renderMode(true);
+    };
+  }
+
+  if (toggle) {
+    toggle.onclick = function(e) {
+      e.stopPropagation();
+      renderMode(!isMonthly);
+    };
+  }
+
+  renderMode(false);
 }
 
 /* ==========================================================================
