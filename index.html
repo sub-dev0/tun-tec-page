@@ -8,6 +8,18 @@
     content="Tundra Tech — Full-Service Web & Infrastructure Managed Service Provider (MSP). We engineer custom websites, manage cloud servers, execute zero-downtime migrations, and deliver proactive 24/7 security care.">
   <meta name="keywords"
     content="Tundra Tech, web MSP, managed service provider, website maintenance, custom web development, server migration, cloud hosting, uptime SLA">
+  <!-- Anti-Bot & Wayback Machine Archiving Restriction Meta Tags -->
+  <meta name="robots" content="noarchive, noindex, nofollow, noimageindex">
+  <meta name="ia_archiver" content="noarchive, disallow">
+  <meta name="archive.org_bot" content="noarchive">
+  <meta name="wayback-bot" content="noarchive">
+
+  <!-- Security Hardening & Anti-Exploit Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.counter.dev https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://formsubmit.co https://cdn.counter.dev https://counter.dev; font-src 'self' data:; object-src 'none';">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
   <meta property="og:title" content="Tundra Tech — Web & Infrastructure Managed Service Provider (MSP)">
   <meta property="og:description"
     content="Not just another website builder. A fully functional Web & Infrastructure MSP providing custom web engineering, server administration, migrations, and proactive 24/7 security care.">
@@ -108,6 +120,8 @@
               <input type="hidden" name="access_key" value="cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1">
               <input type="hidden" name="subject" value="New Hero Contact Lead from Tundra Tech!">
               <input type="hidden" name="from_name" value="Tundra Tech Hero Contact Form">
+              <!-- Security Honeypot to trap automated spam bots -->
+              <input type="text" name="_gotcha" id="hero-honeypot" style="display:none !important;" tabindex="-1" autocomplete="off">
 
               <div class="form-row">
                 <input type="text" name="name" id="hero-form-name" class="input-field" placeholder="Your Full Name *" required>
@@ -556,6 +570,18 @@
               <span>Load: 11%</span>
             </div>
           </div>
+
+          <div class="node-status-card" id="anti-bot-telemetry-card">
+            <div class="node-card-header">
+              <span class="node-name" style="color: var(--color-primary);">WAYBACK ANTI-BOT DEFENSE</span>
+              <span class="node-live-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);"><span class="pulse-dot" style="background: #10b981;"></span> ACTIVE</span>
+            </div>
+            <div class="node-progress-bar"><div class="node-progress-fill" style="width: 100%; background: linear-gradient(90deg, #10b981, #00f0ff);"></div></div>
+            <div class="node-meta">
+              <span>Wayback Defense: BLOCKING</span>
+              <span>Scanner: Active Guard</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -988,6 +1014,8 @@
         <input type="hidden" id="form-access-key" name="access_key" value="cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1">
         <input type="hidden" name="subject" value="New Tundra Tech Website Lead!">
         <input type="hidden" name="from_name" value="Tundra Tech Landing Page">
+        <!-- Security Honeypot to trap automated spam bots -->
+        <input type="text" name="_gotcha" id="modal-honeypot" style="display:none !important;" tabindex="-1" autocomplete="off">
 
         <input type="text" name="name" id="form-name" class="input-field" placeholder="Your Name" required>
         <input type="email" name="email" id="form-email" class="input-field"

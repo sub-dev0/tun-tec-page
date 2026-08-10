@@ -1,0 +1,49 @@
+# ==============================================================================
+# Tundra Tech Anti-Bot & Web Archiving Protection Policy
+# Disallow Internet Archive (Wayback Machine) and Archiving Bots
+# ==============================================================================
+
+# Internet Archive / Wayback Machine Crawlers
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: ia_archiver-web.archive.org
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: Wayback
+Disallow: /
+
+User-agent: Wayback Machine
+Disallow: /
+
+User-agent: Archive-It
+Disallow: /
+
+User-agent: ArchiveIt
+Disallow: /
+
+User-agent: Heritrix
+Disallow: /
+
+User-agent: PageFreezer
+Disallow: /
+
+User-agent: SpecialArchiver
+Disallow: /
+
+# Automated Scrapers & CLI Archiving Tools
+User-agent: Wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+# General Bot Archiving Directives
+User-agent: *
+Disallow: /

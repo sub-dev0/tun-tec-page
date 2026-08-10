@@ -3,6 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initAntiBotScanner();
   initGlacierCanvas();
   initNavbarScroll();
   initPricingToggle();
@@ -352,9 +353,29 @@ function initContactModal() {
     }
   });
 
+  let lastSubmitTime = 0;
+
   if (modalForm) {
     modalForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Security Honeypot check: Abort silently if bot populated hidden field
+      const honeypot = document.getElementById('modal-honeypot')?.value || '';
+      if (honeypot.length > 0) {
+        console.warn('[Security] Automated spam bot trapped by honeypot field. Discarding submission.');
+        const submitBtn = modalForm.querySelector('button[type="submit"]');
+        if (submitBtn) { submitBtn.textContent = 'Request Sent!'; submitBtn.style.background = '#10b981'; }
+        setTimeout(() => { backdrop.classList.remove('active'); modalForm.reset(); }, 1500);
+        return;
+      }
+
+      // Security Rate Limiting check: Enforce 8-second delay between submissions
+      const now = Date.now();
+      if (now - lastSubmitTime < 8000) {
+        console.warn('[Security] Submission rate limit enforced. Please wait before re-submitting.');
+        return;
+      }
+      lastSubmitTime = now;
 
       const name = document.getElementById('form-name')?.value || '';
       const email = document.getElementById('form-email')?.value || '';
@@ -438,6 +459,24 @@ function initContactModal() {
   if (heroForm) {
     heroForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Security Honeypot check: Abort silently if bot populated hidden field
+      const honeypot = document.getElementById('hero-honeypot')?.value || '';
+      if (honeypot.length > 0) {
+        console.warn('[Security] Automated spam bot trapped by hero honeypot field. Discarding submission.');
+        const submitBtn = heroForm.querySelector('button[type="submit"]');
+        if (submitBtn) { submitBtn.textContent = 'Proposal Request Sent!'; submitBtn.style.background = '#10b981'; }
+        setTimeout(() => { heroForm.reset(); }, 1500);
+        return;
+      }
+
+      // Security Rate Limiting check: Enforce 8-second delay between submissions
+      const now = Date.now();
+      if (now - lastSubmitTime < 8000) {
+        console.warn('[Security] Hero form rate limit enforced.');
+        return;
+      }
+      lastSubmitTime = now;
 
       const name = document.getElementById('hero-form-name')?.value || '';
       const email = document.getElementById('hero-form-email')?.value || '';
@@ -681,5 +720,155 @@ function initLegalModals() {
     }
   });
 }
+
+/* ==========================================================================
+   9. ANTI-BOT SCANNER & WAYBACK MACHINE ARCHIVING DEFENSE ENGINE
+   ========================================================================== */
+function initAntiBotScanner() {
+  const isWaybackDomain = window.location.hostname.includes('archive.org') || 
+                          window.location.hostname.includes('wayback') || 
+                          window.location.href.includes('web.archive.org') ||
+                          window.location.pathname.includes('/web/20');
+
+  const hasWaybackGlobal = typeof window.__wm !== 'undefined' || 
+                          typeof window.wayback !== 'undefined' || 
+                          typeof window.__ORIGINAL_URL__ !== 'undefined' ||
+                          typeof window.__wm_disclaimer !== 'undefined';
+
+  const botUAPattern = /ia_archiver|archive\.org_bot|wayback|heritrix|specialarchiver|pagefreezer|archiveit|wget|curl|httrack|headlesschrome|puppeteer|playwright|phantomjs|selenium|ghostdriver/i;
+  const isBotUserAgent = botUAPattern.test(navigator.userAgent || '');
+  const isHeadlessAutomated = navigator.webdriver === true;
+
+  const isBlocked = isWaybackDomain || hasWaybackGlobal || isBotUserAgent || isHeadlessAutomated;
+
+  if (isBlocked) {
+    console.warn('[Anti-Bot Scanner] Archiving bot or Wayback Machine environment detected. Blocking access.');
+    triggerSecurityShield();
+    return true;
+  }
+  return false;
+}
+
+function triggerSecurityShield() {
+  function applyShield() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #030712;
+      color: #f3f4f6;
+      z-index: 99999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    `;
+
+    const card = document.createElement('div');
+    card.style.cssText = `
+      max-width: 580px;
+      width: 100%;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 16px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 50px rgba(239, 68, 68, 0.15);
+      backdrop-filter: blur(12px);
+    `;
+
+    const badge = document.createElement('div');
+    badge.style.cssText = `
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    `;
+    badge.textContent = '🛡️ ACCESS RESTRICTED • SECURITY SHIELD ACTIVE';
+
+    const title = document.createElement('h1');
+    title.style.cssText = `
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 14px 0;
+      line-height: 1.3;
+    `;
+    title.textContent = 'Wayback Machine & Bot Archiving Prohibited';
+
+    const message = document.createElement('p');
+    message.style.cssText = `
+      font-size: 0.98rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    `;
+    message.textContent = 'Tundra Tech (tundratech.org) enforces strict anti-bot and anti-archiving rules. Automated scrapers, Wayback Machine proxies, and web archiving crawlers are restricted from capturing or storing snapshots of this property.';
+
+    const detailBox = document.createElement('div');
+    detailBox.style.cssText = `
+      background: rgba(31, 41, 55, 0.7);
+      border: 1px solid rgba(75, 85, 99, 0.4);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: #60a5fa;
+      text-align: left;
+      margin-bottom: 24px;
+    `;
+
+    const line1 = document.createElement('div');
+    line1.textContent = 'RULE: DISALLOW_WAYBACK_ARCHIVE_403';
+    const line2 = document.createElement('div');
+    line2.textContent = 'STATUS: ACTIVE_DEFENSE_TRIGGERED';
+    const line3 = document.createElement('div');
+    line3.textContent = `TIMESTAMP: ${new Date().toISOString()}`;
+
+    detailBox.appendChild(line1);
+    detailBox.appendChild(line2);
+    detailBox.appendChild(line3);
+
+    const footerText = document.createElement('div');
+    footerText.style.cssText = `
+      font-size: 0.8rem;
+      color: #6b7280;
+    `;
+    footerText.textContent = 'If you are a human visitor, please access the site directly via https://tundratech.org';
+
+    card.appendChild(badge);
+    card.appendChild(title);
+    card.appendChild(message);
+    card.appendChild(detailBox);
+    card.appendChild(footerText);
+
+    overlay.appendChild(card);
+
+    if (document.body) {
+      document.body.replaceChildren(overlay);
+    } else {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.replaceChildren(overlay);
+      });
+    }
+  }
+
+  applyShield();
+}
+
+// Immediate execution check on script parse
+initAntiBotScanner();
+
 
 
