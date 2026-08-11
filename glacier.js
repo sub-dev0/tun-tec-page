@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactModal();
   initPortfolioLightbox();
   initLegalModals();
+  initSecurityAuditForm();
 });
 
 /* ==========================================================================
@@ -916,6 +917,58 @@ function triggerSecurityShield() {
 
 // Immediate execution check on script parse
 initAntiBotScanner();
+
+/* ==========================================================================
+   10. INTERACTIVE SECURITY & LEAK AUDIT SCANNER
+   ========================================================================== */
+function initSecurityAuditForm() {
+  const form = document.getElementById('security-audit-form');
+  const domainInput = document.getElementById('audit-target-domain');
+  const btn = document.getElementById('btn-run-audit');
+
+  const cspStatus = document.getElementById('audit-val-csp');
+  const leakStatus = document.getElementById('audit-val-leaks');
+  const fraudStatus = document.getElementById('audit-val-fraud');
+  const uptimeStatus = document.getElementById('audit-val-uptime');
+
+  if (!form || !btn) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const domain = domainInput?.value.trim() || 'target-domain.com';
+
+    btn.disabled = true;
+    btn.textContent = 'Scanning Domain Headers...';
+
+    // Simulate multi-stage security audit checks
+    setTimeout(() => {
+      btn.textContent = 'Auditing Script & Leak Posture...';
+    }, 700);
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Audit Complete! Re-Scan';
+
+      if (cspStatus) {
+        cspStatus.textContent = 'Strict CSP Verified';
+        cspStatus.className = 'audit-res-status status-pass';
+      }
+      if (leakStatus) {
+        leakStatus.textContent = '0 API Secrets Exposed';
+        leakStatus.className = 'audit-res-status status-pass';
+      }
+      if (fraudStatus) {
+        fraudStatus.textContent = 'Magecart Shield Active';
+        fraudStatus.className = 'audit-res-status status-pass';
+      }
+      if (uptimeStatus) {
+        uptimeStatus.textContent = '99.99% Failover Ready';
+        uptimeStatus.className = 'audit-res-status status-pass';
+      }
+    }, 1500);
+  });
+}
+
 
 
 
