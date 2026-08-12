@@ -943,6 +943,15 @@ h1, h2, h3, h4, .brand-name {
   gap: 4px;
 }
 
+.price-old {
+  text-decoration: line-through;
+  color: var(--text-dim);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-right: 6px;
+  opacity: 0.6;
+}
+
 .price-period {
   font-size: 1rem;
   color: var(--text-muted);
