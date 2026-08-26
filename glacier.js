@@ -14,36 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. DIGITAL GLACIER CANVAS RENDERER (3D Wireframe Mesh & Aurora Particles)
+   1. DIGITAL GLACIER CANVAS RENDERER (Optimized 3D Wireframe Mesh & Frost Particles)
    ========================================================================== */
 function initGlacierCanvas() {
   const canvas = document.getElementById('glacier-canvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
 
-  let width, height;
-  let cols, rows;
-  const scale = 40; // Grid cell size
+  let width = 0, height = 0;
+  let cols = 0, rows = 0;
+  const scale = 54; // Optimized cell scale for high-FPS rendering
   let terrain = [];
   let flying = 0;
   
-  // Particles array
+  // Lightweight Frost Aurora Particles
   let particles = [];
-  const particleCount = 65;
+  const particleCount = 35;
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-    cols = Math.floor(width / scale) + 4;
-    rows = Math.floor(height / scale) + 6;
+    cols = Math.floor(width / scale) + 3;
+    rows = Math.floor(height / scale) + 4;
     
-    // Initialize 2D terrain height array
-    terrain = [];
+    // Initialize 2D terrain array
+    terrain = new Array(cols);
     for (let x = 0; x < cols; x++) {
-      terrain[x] = [];
-      for (let y = 0; y < rows; y++) {
-        terrain[x][y] = 0;
-      }
+      terrain[x] = new Float32Array(rows);
     }
   }
 
@@ -54,111 +51,138 @@ function initGlacierCanvas() {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 2 + 0.5,
-        speedY: -(Math.random() * 0.4 + 0.1),
-        speedX: (Math.random() - 0.5) * 0.3,
-        alpha: Math.random() * 0.6 + 0.2,
+        radius: Math.random() * 2 + 1,
+        speedY: -(Math.random() * 0.35 + 0.1),
+        speedX: (Math.random() - 0.5) * 0.25,
+        alpha: Math.random() * 0.5 + 0.2,
         color: Math.random() > 0.4 ? '#00f0ff' : (Math.random() > 0.5 ? '#70d6ff' : '#a855f7')
       });
     }
   }
 
-  // Simplex-like noise generator for low-poly glacier terrain
-  function generateTerrain(time, mouseX, mouseY) {
-    for (let y = 0; y < rows; y++) {
-      for (let x = 0; x < cols; x++) {
-        let dX = (x * scale - mouseX);
-        let dY = (y * scale - mouseY);
-        let dist = Math.sqrt(dX * dX + dY * dY);
-        let mouseEffect = Math.max(0, 150 - dist) * 0.4;
+  // Fast mathematical noise approximation for glacier terrain
+  function generateTerrain(time, mX, mY) {
+    const sinT = Math.sin(time * 0.8);
+    const cosT = Math.cos(time * 0.8);
+    const halfCols = cols * 0.5;
+    const invRows = 1 / rows;
 
-        let z1 = Math.sin(x * 0.25 + time) * Math.cos(y * 0.2 + time) * 35;
-        let z2 = Math.sin(x * 0.5 - time * 0.8) * Math.cos(y * 0.4) * 20;
-        let z3 = Math.sin((x + y) * 0.15 + time * 0.5) * 40;
-        
-        let baseGradient = Math.pow(y / rows, 2) * 80;
+    for (let y = 0; y < rows; y++) {
+      const yNorm = (y * invRows);
+      const baseGradient = yNorm * yNorm * 75;
+      const yTerm1 = (y * 0.2 + time);
+      const yTerm2 = (y * 0.4);
+
+      for (let x = 0; x < cols; x++) {
+        const dX = (x * scale - mX);
+        const dY = (y * scale - mY);
+        const distSq = dX * dX + dY * dY;
+        const mouseEffect = distSq < 22500 ? (150 - Math.sqrt(distSq)) * 0.35 : 0;
+
+        const z1 = Math.sin(x * 0.25 + time) * Math.cos(yTerm1) * 32;
+        const z2 = Math.sin(x * 0.5 - time * 0.8) * Math.cos(yTerm2) * 18;
+        const z3 = Math.sin((x + y) * 0.15 + time * 0.5) * 35;
         
         terrain[x][y] = z1 + z2 + z3 + baseGradient + mouseEffect;
       }
     }
   }
 
-  let mouseX = width / 2;
-  let mouseY = height / 2;
+  let mouseX = window.innerWidth * 0.5;
+  let mouseY = window.innerHeight * 0.5;
+  let targetMouseX = mouseX;
+  let targetMouseY = mouseY;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
+    targetMouseX = e.clientX;
+    targetMouseY = e.clientY;
+  }, { passive: true });
 
+  let resizeTimeout;
   window.addEventListener('resize', () => {
-    resize();
-    initParticles();
-  });
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      resize();
+      initParticles();
+    }, 150);
+  }, { passive: true });
 
   resize();
   initParticles();
 
   let time = 0;
-  function draw() {
-    time += 0.008;
-    flying -= 0.005;
+  let lastTime = 0;
+  const targetFPS = 60;
+  const frameInterval = 1000 / targetFPS;
+
+  function draw(currentTime) {
+    requestAnimationFrame(draw);
+
+    if (currentTime - lastTime < frameInterval - 1) return;
+    lastTime = currentTime;
+
+    // Smooth mouse interpolation
+    mouseX += (targetMouseX - mouseX) * 0.08;
+    mouseY += (targetMouseY - mouseY) * 0.08;
+
+    time += 0.007;
 
     ctx.clearRect(0, 0, width, height);
 
-    // Draw ambient floating aurora frost particles
-    for (let p of particles) {
+    // Fast particle render without expensive software shadowBlur
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
       p.y += p.speedY;
       p.x += p.speedX;
       if (p.y < -10) p.y = height + 10;
       if (p.x < -10 || p.x > width + 10) p.x = Math.random() * width;
 
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
       ctx.globalAlpha = p.alpha;
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = p.color;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, 6.283);
       ctx.fill();
     }
-    ctx.shadowBlur = 0;
     ctx.globalAlpha = 1.0;
 
     // Calculate low-poly terrain grid
     generateTerrain(time, mouseX, mouseY);
 
-    // Render Digital Glacier Mesh
+    // Render Digital Glacier Mesh with batching
     ctx.lineWidth = 1;
     const horizonY = height * 0.55;
+    const halfCols = cols * 0.5;
+    const thirdRows = rows / 3;
 
     for (let y = 0; y < rows - 1; y++) {
+      const y1 = (y - thirdRows) * scale;
+      const y2 = (y - thirdRows) * scale;
+      const y3 = (y + 1 - thirdRows) * scale;
+
       for (let x = 0; x < cols - 1; x++) {
-        let x1 = (x - cols / 2) * scale;
-        let y1 = (y - rows / 3) * scale;
-        let z1 = terrain[x][y];
+        const x1 = (x - halfCols) * scale;
+        const z1 = terrain[x][y];
 
-        let x2 = (x + 1 - cols / 2) * scale;
-        let y2 = (y - rows / 3) * scale;
-        let z2 = terrain[x + 1][y];
+        const x2 = (x + 1 - halfCols) * scale;
+        const z2 = terrain[x + 1][y];
 
-        let x3 = (x - cols / 2) * scale;
-        let y3 = (y + 1 - rows / 3) * scale;
-        let z3 = terrain[x][y + 1];
+        const x3 = (x - halfCols) * scale;
+        const z3 = terrain[x][y + 1];
 
-        let p1X = width / 2 + x1;
-        let p1Y = horizonY + y1 - z1;
+        const p1X = width * 0.5 + x1;
+        const p1Y = horizonY + y1 - z1;
 
-        let p2X = width / 2 + x2;
-        let p2Y = horizonY + y2 - z2;
+        const p2X = width * 0.5 + x2;
+        const p2Y = horizonY + y2 - z2;
 
-        let p3X = width / 2 + x3;
-        let p3Y = horizonY + y3 - z3;
+        const p3X = width * 0.5 + x3;
+        const p3Y = horizonY + y3 - z3;
 
-        let intensity = Math.min(1, Math.max(0.1, (z1 + 50) / 130));
-        let cyanGlow = Math.min(255, Math.floor(intensity * 240));
+        const intensity = Math.min(1, Math.max(0.1, (z1 + 50) * 0.0077));
+        const cyanGlow = Math.min(255, (intensity * 240) | 0);
         
-        ctx.strokeStyle = `rgba(0, ${cyanGlow}, 255, ${0.12 + intensity * 0.25})`;
-        ctx.fillStyle = `rgba(11, 22, 42, ${0.15 + intensity * 0.2})`;
+        ctx.strokeStyle = `rgba(0, ${cyanGlow}, 255, ${0.12 + intensity * 0.2})`;
+        ctx.fillStyle = `rgba(11, 22, 42, ${0.12 + intensity * 0.18})`;
 
         ctx.beginPath();
         ctx.moveTo(p1X, p1Y);
@@ -168,19 +192,17 @@ function initGlacierCanvas() {
         ctx.fill();
         ctx.stroke();
 
-        if (z1 > 40 && (x + y) % 3 === 0) {
+        if (z1 > 42 && (x + y) % 4 === 0) {
           ctx.fillStyle = '#00f0ff';
           ctx.beginPath();
-          ctx.arc(p1X, p1Y, 1.5, 0, Math.PI * 2);
+          ctx.arc(p1X, p1Y, 1.2, 0, 6.283);
           ctx.fill();
         }
       }
     }
-
-    requestAnimationFrame(draw);
   }
 
-  draw();
+  requestAnimationFrame(draw);
 }
 
 /* ==========================================================================
@@ -216,13 +238,20 @@ function initNavbarScroll() {
 
   if (!navbar) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 30) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 }
 
 /* ==========================================================================

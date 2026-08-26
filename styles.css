@@ -70,6 +70,9 @@ body {
   z-index: -1;
   pointer-events: none;
   opacity: 0.45;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: strict;
 }
 
 /* Overlay gradient for depth */
@@ -84,6 +87,8 @@ body {
               radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
               linear-gradient(180deg, rgba(7, 12, 22, 0.4) 0%, rgba(7, 12, 22, 0.95) 100%);
   pointer-events: none;
+  transform: translateZ(0);
+  contain: strict;
 }
 
 /* Typography Helpers */
@@ -571,6 +576,8 @@ h1, h2, h3, h4, .brand-name {
 .section {
   padding: 100px 0;
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
 }
 
 .section-header {
@@ -609,14 +616,17 @@ h1, h2, h3, h4, .brand-name {
 }
 
 .glass-card {
-  background: var(--bg-card);
+  background: rgba(15, 23, 42, 0.82);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 36px 28px;
-  backdrop-filter: blur(16px);
-  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s, box-shadow 0.22s, background 0.22s;
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .glass-card::before {
@@ -628,11 +638,11 @@ h1, h2, h3, h4, .brand-name {
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
   opacity: 0;
-  transition: var(--transition);
+  transition: opacity 0.22s;
 }
 
 .glass-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) translateZ(0);
   border-color: var(--border-glow);
   background: var(--bg-card-hover);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), var(--glow-shadow);
@@ -900,7 +910,7 @@ h1, h2, h3, h4, .brand-name {
 #pricing-grid-monthly {
   display: none;
   width: 100%;
-  max-width: 880px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -2139,7 +2149,7 @@ h1, h2, h3, h4, .brand-name {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--border-light);
@@ -2147,10 +2157,16 @@ h1, h2, h3, h4, .brand-name {
 
 .offering-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.offering-list li strong {
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 .dot-active {
@@ -2160,6 +2176,7 @@ h1, h2, h3, h4, .brand-name {
   border-radius: 50%;
   box-shadow: 0 0 8px var(--color-primary);
   flex-shrink: 0;
+  margin-top: 7px;
 }
 
 @media (max-width: 992px) {
@@ -2548,6 +2565,20 @@ h1, h2, h3, h4, .brand-name {
   gap: 20px;
 }
 
+.solutions-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricing-grid-dual {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
 /* Dedicated Support Channel Highlight Callout Styling */
 .support-channel-highlight {
   display: flex;
@@ -2601,14 +2632,25 @@ h1, h2, h3, h4, .brand-name {
 }
 
 @media (max-width: 1200px) {
-  .solutions-grid-4 {
+  .solutions-grid-4,
+  .solutions-grid-5,
+  .solutions-grid-6 {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
 }
 
+@media (max-width: 860px) {
+  .pricing-grid-dual {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 @media (max-width: 768px) {
-  .solutions-grid-4 {
+  .solutions-grid-4,
+  .solutions-grid-5,
+  .solutions-grid-6 {
     grid-template-columns: 1fr;
     gap: 20px;
   }
