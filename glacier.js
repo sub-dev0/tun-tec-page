@@ -349,8 +349,8 @@ function initContactModal() {
     }
   });
 
-  // Target recipient email for lead notifications
-  const RECIPIENT_EMAIL = 'team@tundratech.org';
+  // Web3Forms Anonymous Access Key (Securely routes to team@tundratech.org without exposing email)
+  const WEB3FORMS_ACCESS_KEY = '37764cb8-b6cf-4cc2-9423-c4b1eaf41b07';
   let lastSubmitTime = 0;
 
   if (modalForm) {
@@ -389,19 +389,22 @@ function initContactModal() {
       }
 
       try {
-        await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            _subject: `[MSP Inquiry] New Lead from ${name}`,
-            _replyto: email,
-            _captcha: 'false',
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `[MSP Inquiry] New Lead from ${name}`,
+            from_name: 'Tundra Tech Landing Page',
             name: name,
             email: email,
             website: website,
             message: message
           })
         });
+
+        const resData = await res.json();
+        console.log('Web3Forms Response:', resData);
 
         if (submitBtn) {
           submitBtn.textContent = 'Request Sent Successfully!';
@@ -466,13 +469,13 @@ function initContactModal() {
       }
 
       try {
-        await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            _subject: `[Hero Lead] New Proposal Request from ${name}`,
-            _replyto: email,
-            _captcha: 'false',
+            access_key: WEB3FORMS_ACCESS_KEY,
+            subject: `[Hero Lead] New Proposal Request from ${name}`,
+            from_name: 'Tundra Tech Hero Contact Form',
             name: name,
             email: email,
             website: website,
@@ -480,6 +483,9 @@ function initContactModal() {
             message: message
           })
         });
+
+        const resData = await res.json();
+        console.log('Web3Forms Hero Response:', resData);
 
         if (submitBtn) {
           submitBtn.textContent = 'Proposal Request Sent!';
