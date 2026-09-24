@@ -58,12 +58,10 @@
           <li><a href="#live-projects" class="nav-link">Client Work</a></li>
           <li><a href="#infrastructure" class="nav-link">Telemetry</a></li>
           <li><a href="#about" class="nav-link">About Us</a></li>
-          <li><a href="#pricing" class="nav-link">Plans</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <span class="nav-phone-text" id="nav-phone">(888) 617-7483</span>
         <a href="#contact" class="btn btn-primary js-open-modal" id="nav-cta">Get a Quote</a>
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -105,8 +103,8 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
-            <a href="#pricing" class="btn btn-secondary" id="hero-secondary-cta">
-              Explore Plans & SLAs
+            <a href="#services" class="btn btn-secondary" id="hero-secondary-cta">
+              Explore Services & SLAs
             </a>
           </div>
         </div>
@@ -730,196 +728,9 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 5. Packages & Pricing Section with SLA Comparison & Pass-Through Scope -->
-  <section class="section" id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Transparent Service Scope</span>
-        <h2 class="section-title">Transparent Plans & Project Sprints</h2>
-        <p class="section-desc">Choose between one-time audits and custom build sprints, or subscribe to ongoing monthly managed IT and web care plans.</p>
-      </div>
-
-      <div class="pricing-toggle-wrap" id="pricing-toggle-wrap">
-        <span id="label-onetime" style="cursor: pointer; transition: var(--transition);">One-Time Projects & Audits</span>
-        <div class="pricing-toggle" id="pricing-toggle" style="cursor: pointer;">
-          <div class="pricing-toggle-thumb"></div>
-        </div>
-        <span id="label-monthly" style="cursor: pointer; transition: var(--transition);">Monthly Managed Plans</span>
-      </div>
-
-      <!-- 1. One-Time Build Grid (3 Cards - Displayed by default) -->
-      <div class="pricing-grid" id="pricing-grid-onetime">
-        <!-- Plan 1 -->
-        <div class="glass-card price-card">
-          <div>
-            <h3 class="card-title">Remote IT & Security Audit</h3>
-            <p class="card-text">Cloud Tenant, Endpoint & Web Security Review</p>
-            <div class="price-amount">
-              $999 <span class="price-period">one-time</span>
-            </div>
-            <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Microsoft 365 / Workspace Security Audit</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Remote Endpoint Vulnerability & Patch Review</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Web Infrastructure & Secret Leak Scan</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Actionable Hardening Roadmap & Blueprint</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> 1-on-1 Lead Engineer Consultation Call</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Book Security Audit</a>
-        </div>
-
-        <!-- Plan 2 (Featured) -->
-        <div class="glass-card price-card featured">
-          <span class="featured-badge">Most Popular</span>
-          <div>
-            <h3 class="card-title" style="color: var(--color-primary);">Web & Cloud Launch Sprint</h3>
-            <p class="card-text">Custom Website Build + Cloud Workspace Setup</p>
-            <div class="price-amount">
-              $1,999 <span class="price-period">one-time</span>
-            </div>
-            <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Multi-Page Custom Website Build & Modern UX</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Cloud Workspace Setup (M365 or Workspace)</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> DNSSEC, Domain Routing & SSL Hardening</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Core Web Vitals Speed (Lighthouse 95+)</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Includes 3 Design Revision Rounds</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn btn-primary js-open-modal" style="width: 100%;">Start Launch Sprint</a>
-        </div>
-
-        <!-- Plan 3 -->
-        <div class="glass-card price-card">
-          <div>
-            <h3 class="card-title">Full Cloud & IT Migration</h3>
-            <p class="card-text">Complex Migrations, System Redesigns & Hardening</p>
-            <div class="price-amount">
-              $3,499 <span class="price-period">one-time</span>
-            </div>
-            <ul class="price-features">
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Full Legacy-to-Cloud or Tenant Migration</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Remote Endpoint Rollout & Security Baseline</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Custom Web Platform or Enterprise Redesign</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> Custom WAF Edge Rules & Zero-Trust Policies</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg> 99.99% Infrastructure Uptime SLA Guarantee</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Book IT Migration</a>
-        </div>
-      </div>
-
-      <!-- 2. Monthly Care Plans (Dual Tier Cards - Displayed when toggled) -->
-      <div id="pricing-grid-monthly" style="display: none;">
-        <div class="pricing-grid-dual">
-          <!-- Tier 1: Core Web & Cloud Care -->
-          <div class="glass-card price-card">
-            <span class="featured-badge" style="background: rgba(6, 182, 212, 0.2); color: var(--color-primary); border: 1px solid var(--color-primary);">Web & Cloud Care</span>
-            <div>
-              <h3 class="card-title" style="color: var(--color-primary); font-size: 1.6rem;">Core Web & Cloud Care</h3>
-              <p class="card-text">Managed Web Presence, Hosting & Security Upkeep</p>
-              <div class="price-amount">
-                $399 <span class="price-period">/ month</span>
-              </div>
-              <p style="font-size: 0.8rem; color: #10b981; font-weight: 600; margin-bottom: 20px;">
-                ✓ 6-month initial agreement, then month-to-month.
-              </p>
-              <ul class="price-features">
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Sub-Second Edge CDN Hosting (up to 5 GB storage)</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Standard Content & Layout Upkeep (2 hrs/mo included)</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Proactive 24/7 Security Scanning & WAF Defense</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Daily Automated Cloud Backups & Rapid Recovery</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Core Web Vitals Maintenance & SEO Schema Upkeep</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Direct Slack Access to Lead Engineers</li>
-              </ul>
-            </div>
-            <a href="#contact" class="btn btn-secondary js-open-modal" style="width: 100%;">Subscribe to Core Care ($399/mo)</a>
-          </div>
-
-          <!-- Tier 2: Complete Remote MSP -->
-          <div class="glass-card price-card featured">
-            <span class="featured-badge">Full Remote MSP</span>
-            <div>
-              <h3 class="card-title" style="color: var(--color-primary); font-size: 1.6rem;">Complete Remote MSP</h3>
-              <p class="card-text">All-in-One IT Helpdesk, Cloud Admin, Security & Web</p>
-              <div class="price-amount">
-                $799 <span class="price-period">/ month</span>
-              </div>
-              <p style="font-size: 0.8rem; color: #10b981; font-weight: 600; margin-bottom: 20px;">
-                ✓ 6-month initial agreement, then month-to-month.
-              </p>
-              <ul class="price-features">
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> <strong>Everything in Core Web & Cloud Care PLUS:</strong></li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Remote IT Helpdesk & User Ticketing Support</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Microsoft 365 & Google Workspace Administration</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Endpoint RMM, Health Telemetry & OS Patching</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Zero-Trust MFA & Anti-Phishing Security</li>
-                <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg> Guaranteed 15-Minute Critical Incident SLA</li>
-              </ul>
-            </div>
-            <a href="#contact" class="btn btn-primary js-open-modal" style="width: 100%;">Subscribe to Complete MSP ($799/mo)</a>
-          </div>
-        </div>
-      </div>
 
       <!-- Dedicated Support Channel Highlight Callout -->
-      <div class="glass-card support-channel-highlight" style="margin-top: 40px;">
+      <div class="glass-card support-channel-highlight" style="margin-top: 36px;">
         <div class="support-highlight-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -946,9 +757,6 @@
           <p>
             Modest, high-performance, 100% remote Managed Service Provider (MSP). Delivering remote IT operations, cloud & SaaS administration, proactive cybersecurity, and custom web design, hosting, and upkeep.
           </p>
-          <div style="margin-top: 14px;">
-            <a href="tel:8886177483" class="footer-phone-text" id="footer-phone">(888) 617-7483</a>
-          </div>
         </div>
 
         <div>
@@ -966,8 +774,8 @@
           <h4 class="footer-heading">Interactive</h4>
           <ul class="footer-links">
             <li><a href="#live-projects">Managed Client Deployments</a></li>
-            <li><a href="#pricing">Project Sprints & Audits</a></li>
-            <li><a href="#pricing">Monthly Managed Plans</a></li>
+            <li><a href="#infrastructure">Live Telemetry & SLAs</a></li>
+            <li><a href="#about">About Our Remote Model</a></li>
             <li><a href="#contact" class="js-open-modal">Get a Quote</a></li>
           </ul>
         </div>
@@ -1018,7 +826,7 @@
         <input type="text" name="website" id="form-website" class="input-field"
           placeholder="Business Name or Current Website URL *">
         <textarea name="message" id="form-message" class="input-field" style="height: 95px; resize: none;"
-          placeholder="Describe your needs (Remote IT Helpdesk, M365 Setup, Cybersecurity Hardening, Custom Web Design, Monthly Care Plan, etc.) *"
+          placeholder="Describe your needs (Remote IT Helpdesk, M365 Setup, Cybersecurity Hardening, Custom Web Design, Ongoing IT Support, etc.) *"
           required></textarea>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Send Proposal Request</button>
       </form>
@@ -1164,9 +972,9 @@
         <section class="legal-section">
           <h4>5. Domain Ownership & Administration</h4>
           <p>Clients retain 100% direct ownership of domain names registered under their registrar account. Delegated
-            DNS access carries a $0 fee. Managed domains registered by us are billed annually at direct cost plus a
-            standard $15–$25/yr DNS administration fee. Automated SSL certificates and DNSSEC security routing are
-            included at $0 extra.</p>
+            DNS access carries no additional fee. Managed domains registered by us are billed annually at direct cost plus a
+            standard pass-through DNS administration fee. Automated SSL certificates and DNSSEC security routing are
+            included at no additional cost.</p>
         </section>
 
         <section class="legal-section">

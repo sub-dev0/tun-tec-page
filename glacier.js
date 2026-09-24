@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initAntiBotScanner();
   initGlacierCanvas();
   initNavbarScroll();
-  initPricingToggle();
   initContactModal();
   initPortfolioLightbox();
   initLegalModals();
@@ -318,86 +317,6 @@ function initSimulator() {
   setInterval(() => {
     updateSim();
   }, 1000);
-}
-
-/* ==========================================================================
-   4. PRICING BILLING TOGGLE (One-Time Build vs Monthly Care Package)
-   ========================================================================== */
-function initPricingToggle() {
-  const toggleWrap = document.getElementById('pricing-toggle-wrap');
-  const toggle = document.getElementById('pricing-toggle');
-  const labelOnetime = document.getElementById('label-onetime');
-  const labelMonthly = document.getElementById('label-monthly');
-  const gridOnetime = document.getElementById('pricing-grid-onetime');
-  const gridMonthly = document.getElementById('pricing-grid-monthly');
-
-  if (!gridOnetime || !gridMonthly) return;
-
-  let isMonthly = false;
-
-  function renderMode(monthly) {
-    isMonthly = monthly;
-
-    if (toggle) {
-      if (isMonthly) {
-        toggle.classList.add('active');
-      } else {
-        toggle.classList.remove('active');
-      }
-    }
-
-    if (labelOnetime) {
-      labelOnetime.style.color = isMonthly ? 'var(--text-muted)' : 'var(--color-primary)';
-      labelOnetime.style.fontWeight = isMonthly ? '400' : '700';
-    }
-    if (labelMonthly) {
-      labelMonthly.style.color = isMonthly ? 'var(--color-primary)' : 'var(--text-muted)';
-      labelMonthly.style.fontWeight = isMonthly ? '700' : '400';
-    }
-
-    if (isMonthly) {
-      gridOnetime.classList.add('inactive');
-      gridOnetime.style.display = 'none';
-
-      gridMonthly.classList.add('active');
-      gridMonthly.style.display = 'block';
-    } else {
-      gridOnetime.classList.remove('inactive');
-      gridOnetime.style.display = 'grid';
-
-      gridMonthly.classList.remove('active');
-      gridMonthly.style.display = 'none';
-    }
-  }
-
-  if (toggleWrap) {
-    toggleWrap.onclick = function(e) {
-      renderMode(!isMonthly);
-    };
-  }
-
-  if (labelOnetime) {
-    labelOnetime.onclick = function(e) {
-      e.stopPropagation();
-      renderMode(false);
-    };
-  }
-
-  if (labelMonthly) {
-    labelMonthly.onclick = function(e) {
-      e.stopPropagation();
-      renderMode(true);
-    };
-  }
-
-  if (toggle) {
-    toggle.onclick = function(e) {
-      e.stopPropagation();
-      renderMode(!isMonthly);
-    };
-  }
-
-  renderMode(false);
 }
 
 /* ==========================================================================
