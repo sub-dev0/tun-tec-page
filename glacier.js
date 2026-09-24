@@ -349,6 +349,8 @@ function initContactModal() {
     }
   });
 
+  // Target recipient email for lead notifications
+  const RECIPIENT_EMAIL = 'team@tundratech.org';
   let lastSubmitTime = 0;
 
   if (modalForm) {
@@ -390,13 +392,14 @@ function initContactModal() {
       try {
         let sent = false;
 
-        const res = await fetch('https://api.web3forms.com/submit', {
+        // 1. Primary dispatch directly to team@tundratech.org via FormSubmit
+        const res = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            access_key: accessKey,
-            subject: `[MSP Inquiry] New Lead from ${name}`,
-            from_name: 'Tundra Tech Landing Page',
+            _subject: `[MSP Inquiry] New Lead from ${name}`,
+            _replyto: email,
+            _captcha: 'false',
             name: name,
             email: email,
             website: website,
@@ -404,26 +407,30 @@ function initContactModal() {
           })
         });
 
-        const resData = await res.json();
-        console.log('Web3Forms Response:', resData);
-        if (resData.success) {
-          sent = true;
+        if (res.ok) {
+          const resData = await res.json();
+          if (resData.success === 'true' || resData.success === true || resData.message) {
+            sent = true;
+          }
         }
 
-        // Fallback to FormSubmit AJAX
-        if (!sent) {
-          await fetch('https://formsubmit.co/ajax/alexander@tundratech.org', {
+        // 2. Secondary fallback to Web3Forms if FormSubmit is unreachable
+        if (!sent && accessKey) {
+          const fallbackRes = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
-              _subject: `[MSP Inquiry] New Lead from ${name}`,
-              _captcha: 'false',
+              access_key: accessKey,
+              subject: `[MSP Inquiry] New Lead from ${name}`,
+              from_name: 'Tundra Tech Landing Page',
               name: name,
               email: email,
               website: website,
               message: message
             })
           });
+          const fbData = await fallbackRes.json();
+          if (fbData.success) sent = true;
         }
 
         if (submitBtn) {
@@ -432,6 +439,25 @@ function initContactModal() {
         }
       } catch (err) {
         console.warn('Form submit notice:', err);
+        try {
+          if (accessKey) {
+            await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                access_key: accessKey,
+                subject: `[MSP Inquiry] New Lead from ${name}`,
+                from_name: 'Tundra Tech Landing Page',
+                name: name,
+                email: email,
+                website: website,
+                message: message
+              })
+            });
+          }
+        } catch (fallbackErr) {
+          console.warn('Fallback submit notice:', fallbackErr);
+        }
         if (submitBtn) {
           submitBtn.textContent = 'Request Sent!';
           submitBtn.style.background = '#10b981';
@@ -492,13 +518,14 @@ function initContactModal() {
       try {
         let sent = false;
 
-        const res = await fetch('https://api.web3forms.com/submit', {
+        // 1. Primary dispatch directly to team@tundratech.org via FormSubmit
+        const res = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            access_key: accessKey,
-            subject: `[Hero Lead] New Proposal Request from ${name}`,
-            from_name: 'Tundra Tech Hero Contact Form',
+            _subject: `[Hero Lead] New Proposal Request from ${name}`,
+            _replyto: email,
+            _captcha: 'false',
             name: name,
             email: email,
             website: website,
@@ -507,16 +534,22 @@ function initContactModal() {
           })
         });
 
-        const resData = await res.json();
-        if (resData.success) sent = true;
+        if (res.ok) {
+          const resData = await res.json();
+          if (resData.success === 'true' || resData.success === true || resData.message) {
+            sent = true;
+          }
+        }
 
-        if (!sent) {
-          await fetch('https://formsubmit.co/ajax/alexander@tundratech.org', {
+        // 2. Secondary fallback to Web3Forms if FormSubmit is unreachable
+        if (!sent && accessKey) {
+          const fallbackRes = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
-              _subject: `[Hero Lead] New Proposal Request from ${name}`,
-              _captcha: 'false',
+              access_key: accessKey,
+              subject: `[Hero Lead] New Proposal Request from ${name}`,
+              from_name: 'Tundra Tech Hero Contact Form',
               name: name,
               email: email,
               website: website,
@@ -524,6 +557,8 @@ function initContactModal() {
               message: message
             })
           });
+          const fbData = await fallbackRes.json();
+          if (fbData.success) sent = true;
         }
 
         if (submitBtn) {
@@ -532,6 +567,26 @@ function initContactModal() {
         }
       } catch (err) {
         console.warn('Hero form submit notice:', err);
+        try {
+          if (accessKey) {
+            await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                access_key: accessKey,
+                subject: `[Hero Lead] New Proposal Request from ${name}`,
+                from_name: 'Tundra Tech Hero Contact Form',
+                name: name,
+                email: email,
+                website: website,
+                phone: phone,
+                message: message
+              })
+            });
+          }
+        } catch (fallbackErr) {
+          console.warn('Fallback submit notice:', fallbackErr);
+        }
         if (submitBtn) {
           submitBtn.textContent = 'Proposal Request Sent!';
           submitBtn.style.background = '#10b981';
