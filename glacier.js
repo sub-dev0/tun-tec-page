@@ -379,7 +379,6 @@ function initContactModal() {
       const email = document.getElementById('form-email')?.value || '';
       const website = document.getElementById('form-website')?.value || '';
       const message = document.getElementById('form-message')?.value || '';
-      const accessKey = document.getElementById('form-access-key')?.value || 'cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1';
 
       const submitBtn = modalForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : 'Get Free Proposal';
@@ -390,10 +389,7 @@ function initContactModal() {
       }
 
       try {
-        let sent = false;
-
-        // 1. Primary dispatch directly to team@tundratech.org via FormSubmit
-        const res = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
@@ -407,57 +403,12 @@ function initContactModal() {
           })
         });
 
-        if (res.ok) {
-          const resData = await res.json();
-          if (resData.success === 'true' || resData.success === true || resData.message) {
-            sent = true;
-          }
-        }
-
-        // 2. Secondary fallback to Web3Forms if FormSubmit is unreachable
-        if (!sent && accessKey) {
-          const fallbackRes = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-              access_key: accessKey,
-              subject: `[MSP Inquiry] New Lead from ${name}`,
-              from_name: 'Tundra Tech Landing Page',
-              name: name,
-              email: email,
-              website: website,
-              message: message
-            })
-          });
-          const fbData = await fallbackRes.json();
-          if (fbData.success) sent = true;
-        }
-
         if (submitBtn) {
           submitBtn.textContent = 'Request Sent Successfully!';
           submitBtn.style.background = '#10b981';
         }
       } catch (err) {
         console.warn('Form submit notice:', err);
-        try {
-          if (accessKey) {
-            await fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify({
-                access_key: accessKey,
-                subject: `[MSP Inquiry] New Lead from ${name}`,
-                from_name: 'Tundra Tech Landing Page',
-                name: name,
-                email: email,
-                website: website,
-                message: message
-              })
-            });
-          }
-        } catch (fallbackErr) {
-          console.warn('Fallback submit notice:', fallbackErr);
-        }
         if (submitBtn) {
           submitBtn.textContent = 'Request Sent!';
           submitBtn.style.background = '#10b981';
@@ -505,7 +456,6 @@ function initContactModal() {
       const website = document.getElementById('hero-form-website')?.value || '';
       const phone = document.getElementById('hero-form-phone')?.value || '';
       const message = document.getElementById('hero-form-message')?.value || '';
-      const accessKey = 'cd3e2b03-9281-4bc2-9680-ab6d3d8db5b1';
 
       const submitBtn = heroForm.querySelector('button[type="submit"]');
       const originalContent = submitBtn ? submitBtn.innerHTML : 'Send Proposal Request';
@@ -516,10 +466,7 @@ function initContactModal() {
       }
 
       try {
-        let sent = false;
-
-        // 1. Primary dispatch directly to team@tundratech.org via FormSubmit
-        const res = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
@@ -534,59 +481,12 @@ function initContactModal() {
           })
         });
 
-        if (res.ok) {
-          const resData = await res.json();
-          if (resData.success === 'true' || resData.success === true || resData.message) {
-            sent = true;
-          }
-        }
-
-        // 2. Secondary fallback to Web3Forms if FormSubmit is unreachable
-        if (!sent && accessKey) {
-          const fallbackRes = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-              access_key: accessKey,
-              subject: `[Hero Lead] New Proposal Request from ${name}`,
-              from_name: 'Tundra Tech Hero Contact Form',
-              name: name,
-              email: email,
-              website: website,
-              phone: phone,
-              message: message
-            })
-          });
-          const fbData = await fallbackRes.json();
-          if (fbData.success) sent = true;
-        }
-
         if (submitBtn) {
           submitBtn.textContent = 'Proposal Request Sent!';
           submitBtn.style.background = '#10b981';
         }
       } catch (err) {
         console.warn('Hero form submit notice:', err);
-        try {
-          if (accessKey) {
-            await fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify({
-                access_key: accessKey,
-                subject: `[Hero Lead] New Proposal Request from ${name}`,
-                from_name: 'Tundra Tech Hero Contact Form',
-                name: name,
-                email: email,
-                website: website,
-                phone: phone,
-                message: message
-              })
-            });
-          }
-        } catch (fallbackErr) {
-          console.warn('Fallback submit notice:', fallbackErr);
-        }
         if (submitBtn) {
           submitBtn.textContent = 'Proposal Request Sent!';
           submitBtn.style.background = '#10b981';
